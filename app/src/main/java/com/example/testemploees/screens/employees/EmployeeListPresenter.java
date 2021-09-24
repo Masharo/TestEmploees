@@ -26,12 +26,8 @@ public class EmployeeListPresenter {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        employeeResponse -> {
-                            view.showData(employeeResponse.getResponse());
-                        },
-                        throwable -> {
-                            view.showError();
-                        }
+                        employeeResponse -> view.showData(employeeResponse.getResponse()),
+                        throwable -> view.showError()
                 );
 
         compositeDisposable.add(disposable);

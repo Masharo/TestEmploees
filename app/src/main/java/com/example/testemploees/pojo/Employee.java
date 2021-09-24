@@ -1,12 +1,18 @@
 package com.example.testemploees.pojo;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+@Entity(tableName = "employees")
 public class Employee {
 
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     @SerializedName("f_name")
     @Expose
     private String fName;
@@ -22,6 +28,14 @@ public class Employee {
     @SerializedName("specialty")
     @Expose
     private List<Speciality> specialty = null;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getfName() {
         return fName;
