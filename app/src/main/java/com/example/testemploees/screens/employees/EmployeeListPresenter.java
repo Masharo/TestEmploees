@@ -10,6 +10,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+@Deprecated
 public class EmployeeListPresenter {
 
     private CompositeDisposable compositeDisposable;
@@ -26,7 +27,7 @@ public class EmployeeListPresenter {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        employeeResponse -> view.showData(employeeResponse.getResponse()),
+                        employeeResponse -> view.showData(employeeResponse.getEmployees()),
                         throwable -> view.showError()
                 );
 

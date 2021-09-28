@@ -25,9 +25,9 @@ public class Employee {
     @SerializedName("avatr_url")
     @Expose
     private String avatrUrl;
-    @SerializedName("specialty")
-    @Expose
-    private List<Speciality> specialty = null;
+//    @SerializedName("specialty")
+//    @Expose
+//    private List<Speciality> specialty = null;
 
     public int getId() {
         return id;
@@ -37,19 +37,19 @@ public class Employee {
         this.id = id;
     }
 
-    public String getfName() {
+    public String getFName() {
         return fName;
     }
 
-    public void setfName(String fName) {
+    public void setFName(String fName) {
         this.fName = fName;
     }
 
-    public String getlName() {
+    public String getLName() {
         return lName;
     }
 
-    public void setlName(String lName) {
+    public void setLName(String lName) {
         this.lName = lName;
     }
 
@@ -68,13 +68,5 @@ public class Employee {
     public void setAvatrUrl(String avatrUrl) {
         this.avatrUrl = avatrUrl;
     }
-
-    public List<Speciality> getSpecialty() {
-        return specialty;
-    }
-
-    public void setSpecialty(List<Speciality> specialty) {
-        this.specialty = specialty;
-    }
-
+    
 }
