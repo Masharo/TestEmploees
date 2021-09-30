@@ -1,6 +1,7 @@
 package com.example.testemploees.screens.employees;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testemploees.R;
 import com.example.testemploees.adapters.EmployeeAdapter;
+
+import java.util.Objects;
 
 public class EmployeeListActivity extends AppCompatActivity {
 
@@ -35,7 +38,17 @@ public class EmployeeListActivity extends AppCompatActivity {
                     .create(EmployeeViewModel.class);
 
         viewModel.getEmployees().observe(this,
-                employees -> adapter.setEmployees(employees));
+                employees -> {
+                    adapter.setEmployees(employees);
+
+                    if (Objects.nonNull(employees)) {
+                        employees.forEach(employee ->
+                            employee.getSpecialty().forEach(speciality ->
+                                Log.i("Speciality: ", speciality.getName())
+                            )
+                        );
+                    }
+                });
 
         viewModel.getErrors().observe(this,
                 error -> Toast.makeText(getApplication(), "Error", Toast.LENGTH_SHORT).show());

@@ -56,7 +56,6 @@ public class EmployeeViewModel extends AndroidViewModel {
 
         @Override
         protected Void doInBackground(List<Employee>... lists) {
-
             if (isValidData(lists)) {
                 db.employeeDAO().insertEmployees(lists[0]);
             }

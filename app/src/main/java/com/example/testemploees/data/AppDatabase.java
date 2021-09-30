@@ -10,7 +10,7 @@ import com.example.testemploees.pojo.Employee;
 
 import java.util.Objects;
 
-@Database(entities = {Employee.class}, version = 2, exportSchema = false)
+@Database(entities = {Employee.class}, version = 3, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DB_NAME = "employees_db";
@@ -23,7 +23,9 @@ public abstract class AppDatabase extends RoomDatabase {
     public synchronized static AppDatabase getInstance(Context context) {
 
         if (Objects.isNull(appDatabaseThis)) {
-            appDatabaseThis = Room.databaseBuilder(context, AppDatabase.class, DB_NAME).build();
+            appDatabaseThis = Room.databaseBuilder(context, AppDatabase.class, DB_NAME)
+                                  .fallbackToDestructiveMigration()
+                                  .build();
         }
 
         return appDatabaseThis;
